@@ -80,7 +80,7 @@ export default function App() {
     };
   }, [loading]);
 
-  // Magnetic Pull Effect on Interactive Elements
+  // Magnetic Pull Effect & Spotlight Effect on Cards
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const magneticElements = document.querySelectorAll('.magnetic-element');
@@ -99,6 +99,15 @@ export default function App() {
         } else {
           (el as HTMLElement).style.transform = 'translate(0px, 0px)';
         }
+      });
+
+      const cards = document.querySelectorAll('.glass-card, .glass-panel');
+      cards.forEach((card) => {
+        const rect = (card as HTMLElement).getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        (card as HTMLElement).style.setProperty('--mouse-x', `${x}px`);
+        (card as HTMLElement).style.setProperty('--mouse-y', `${y}px`);
       });
     };
 
@@ -344,7 +353,7 @@ export default function App() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2.5 rounded-xl bg-[#161C2C] border border-[#2A344E] text-white"
+            className="lg:hidden p-3.5 rounded-xl bg-[#161C2C] border border-[#2A344E] text-white active:scale-95 transition-transform"
             aria-label="Toggle mobile menu"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -354,7 +363,7 @@ export default function App() {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[73px] bg-[#06070A]/95 backdrop-blur-xl border-b border-[#2A344E] p-6 z-30 shadow-2xl flex flex-col gap-4 animate-[fadeIn_0.2s_ease-out]">
+        <div className="lg:hidden fixed inset-x-0 top-[73px] bg-[#06070A]/98 backdrop-blur-2xl border-b border-[#2A344E] p-6 z-30 shadow-2xl flex flex-col gap-3 animate-[fadeIn_0.2s_ease-out]">
           {[
             { id: 'home', label: 'Home' },
             { id: 'about', label: 'About' },
@@ -367,7 +376,7 @@ export default function App() {
               key={item.id}
               href={`#${item.id}`}
               onClick={() => setMobileMenuOpen(false)}
-              className="text-base font-medium text-[#CBD5E1] hover:text-white py-2 border-b border-[#2A344E]/50 flex items-center justify-between"
+              className="text-base font-semibold text-[#CBD5E1] hover:text-white py-3 px-4 rounded-xl hover:bg-[#161C2C]/80 border border-transparent hover:border-[#2A344E] transition-all flex items-center justify-between"
             >
               <span>{item.label}</span>
               <ArrowRight className="w-4 h-4 text-[#7957FF]" />
