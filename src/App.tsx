@@ -174,7 +174,7 @@ export default function App() {
       category: "Main Platform & Community Hub",
       description: "An advanced interactive platform designed for seamless connection, community collaboration, and digital workspace management with sleek UI and fluid animations.",
       technologies: ["React", "Tailwind CSS", "Interactive UI", "TypeScript"],
-      image: "/public/assets/aistudio/image_266b53f1.png",
+      image: "/assets/aistudio/image_266b53f1.png",
       link: "https://buddyhub.ai.studio",
       source: "https://github.com/jigarjalu",
       featured: true
@@ -185,7 +185,7 @@ export default function App() {
       category: "Brand Showcase & Web App",
       description: "A premium brand identity and digital experience showcase emphasizing bold typography, minimalist design, and immersive transitions.",
       technologies: ["HTML5", "CSS3", "JavaScript", "Animations"],
-      image: "/public/assets/aistudio/image_2c9bc7eb.png",
+      image: "/assets/aistudio/image_2c9bc7eb.png",
       link: "https://aarambh-brand.vercel.app",
       source: "https://github.com/jigarjalu"
     },
@@ -195,7 +195,7 @@ export default function App() {
       category: "E-Commerce & Boutique",
       description: "An exquisite digital storefront concept celebrating ethnic couture and artisanal craftsmanship with refined product galleries and smooth UX.",
       technologies: ["UI/UX Design", "Tailwind CSS", "JavaScript"],
-      image: "/public/assets/aistudio/image_79ffe7e9.png",
+      image: "/assets/aistudio/image_79ffe7e9.png",
       link: "https://zaree-by-asha-rajkot-com.ai.studio",
       source: "https://github.com/jigarjalu"
     },
@@ -205,7 +205,7 @@ export default function App() {
       category: "Hospitality & Dining",
       description: "A high-end restaurant and culinary pavilion digital experience featuring atmospheric photography, menu discovery, and online reservation flow.",
       technologies: ["Responsive Design", "Tailwind CSS", "JavaScript"],
-      image: "/public/assets/aistudio/image_e47eb0f7.png",
+      image: "/assets/aistudio/image_e47eb0f7.png",
       link: "https://the-pestro-pavilion.vercel.app",
       source: "https://github.com/jigarjalu"
     },
@@ -215,7 +215,7 @@ export default function App() {
       category: "Resort & Travel Experience",
       description: "An immersive travel and mountain retreat showcase highlighting scenic landscapes, luxury accommodations, and seamless booking interaction.",
       technologies: ["Frontend Design", "Animations", "Tailwind CSS"],
-      image: "/public/assets/aistudio/image_cf435a1a.png",
+      image: "/assets/aistudio/image_cf435a1a.png",
       link: "https://the-mountain-view.vercel.app",
       source: "https://github.com/jigarjalu"
     }
@@ -285,7 +285,7 @@ export default function App() {
           <div className="relative mb-6">
             <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-2xl animate-pulse-glow border border-[#7957FF]/40">
               <img
-                src="/public/assets/aistudio/Sleek_JJJ_Gradient_Monogram_Branding_a6f3fa31.png"
+                src="/assets/aistudio/Sleek_JJJ_Gradient_Monogram_Branding_a6f3fa31.png"
                 alt="JJJ Logo"
                 className="w-full h-full object-cover animate-rotate-in"
               />
@@ -310,7 +310,7 @@ export default function App() {
         <a href="#home" className="flex items-center gap-3 text-lg font-bold tracking-tight whitespace-nowrap shrink-0 group">
           <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-[#7957FF]/30 group-hover:scale-105 transition-transform border border-[#7957FF]/40">
             <img
-              src="/public/assets/aistudio/Sleek_JJJ_Gradient_Monogram_Branding_a6f3fa31.png"
+              src="/assets/aistudio/Sleek_JJJ_Gradient_Monogram_Branding_a6f3fa31.png"
               alt="JJJ Logo"
               className="w-full h-full object-cover animate-rotate-in"
             />
@@ -450,7 +450,7 @@ export default function App() {
             <div className="w-full max-w-md rounded-2xl overflow-hidden glass-panel p-3 border border-[#7957FF]/30 relative shadow-2xl">
               <div className="relative rounded-xl overflow-hidden aspect-[4/5] bg-[#161C2C]">
                 <img
-                  src="/public/assets/aistudio/Cinematic_Executive_Portrait_in_a_Modern_Office_c0fea8d5.png"
+                  src="/assets/aistudio/Cinematic_Executive_Portrait_in_a_Modern_Office_c0fea8d5.png"
                   alt="Jigar J Jalu Portrait"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
@@ -1100,7 +1100,7 @@ export default function App() {
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg border border-[#2A344E]">
               <img
-                src="/public/assets/aistudio/Sleek_JJJ_Gradient_Monogram_Branding_a6f3fa31.png"
+                src="/assets/aistudio/Sleek_JJJ_Gradient_Monogram_Branding_a6f3fa31.png"
                 alt="JJJ Logo"
                 className="w-full h-full object-cover animate-rotate-in"
               />
