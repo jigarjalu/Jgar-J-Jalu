@@ -36,6 +36,7 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>('home');
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
+  const [scrollProgress, setScrollProgress] = useState<number>(0);
 
   // Contact Form State
   const [formData, setFormData] = useState({
@@ -52,6 +53,57 @@ export default function App() {
   // Project Modal & Carousel State
   const [selectedProject, setSelectedProject] = useState<any | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+
+  // Testimonials Carousel State & Data
+  const testimonialsData = [
+    {
+      id: 1,
+      quote: "Jigar delivered an exceptional web application for our community platform. His attention to detail, prompt engineering expertise, and creative execution exceeded our expectations.",
+      author: "Aarav Mehta",
+      role: "Product Lead",
+      company: "TechVibe Solutions",
+      rating: 5,
+      avatar: "AM"
+    },
+    {
+      id: 2,
+      quote: "Working with Jigar on our boutique e-commerce storefront was a fantastic experience. The UI design is refined, performant, and perfectly captures our brand identity.",
+      author: "Asha Trivedi",
+      role: "Founder & Creative Director",
+      company: "Zaree Boutique",
+      rating: 5,
+      avatar: "AT"
+    },
+    {
+      id: 3,
+      quote: "An incredible digital creator and developer. Jigar transformed our restaurant concept into a stunning digital pavilion with smooth navigation and gorgeous layouts.",
+      author: "Rohan Varma",
+      role: "Operations Manager",
+      company: "The Pestro Hospitality",
+      rating: 5,
+      avatar: "RV"
+    },
+    {
+      id: 4,
+      quote: "Jigar's project management and development skills are top-notch. He communicates clearly, respects deadlines, and builds robust, high-performance web solutions.",
+      author: "Priya Joshi",
+      role: "Startup Founder",
+      company: "InnovateX Labs",
+      rating: 5,
+      avatar: "PJ"
+    }
+  ];
+
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState<number>(0);
+  const [isTestimonialPaused, setIsTestimonialPaused] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isTestimonialPaused) return;
+    const interval = setInterval(() => {
+      setCurrentTestimonialIndex((prev) => (prev + 1) % testimonialsData.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [isTestimonialPaused]);
 
   // Fully working loading progress animation
   useEffect(() => {
@@ -133,13 +185,18 @@ export default function App() {
   // Scroll listener for back-to-top and active section
   useEffect(() => {
     const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const currentScroll = window.scrollY;
+      const progress = totalScroll > 0 ? (currentScroll / totalScroll) * 100 : 0;
+      setScrollProgress(progress);
+
       if (window.scrollY > 400) {
         setShowBackToTop(true);
       } else {
         setShowBackToTop(false);
       }
 
-      const sections = ['home', 'about', 'expertise', 'projects', 'services', 'process', 'contact'];
+      const sections = ['home', 'about', 'expertise', 'projects', 'services', 'process', 'testimonials', 'contact'];
       const scrollPos = window.scrollY + 200;
       for (const s of sections) {
         const el = document.getElementById(s);
@@ -309,10 +366,18 @@ export default function App() {
     }
   ];
 
-  const logoSrc = "/assets/aistudio/Jigar_Jalu_Premium_Tech_Monogram_03a315d3.png";
+  const logoSrc = "/assets/aistudio/image_32ada8fd.png";
 
   return (
     <div className="min-h-screen bg-[#1A1D1C] text-[#D4D9D2] relative selection:bg-[#4B8B5F] selection:text-white cursor-default antialiased overflow-x-hidden">
+      
+      {/* Thin Fixed Scroll Progress Bar with Metallic Dark Green & Black Touch */}
+      <div className="fixed top-0 left-0 right-0 z-50 h-[3px] bg-[#1A1D1C]/85 pointer-events-none">
+        <div 
+          className="h-full bg-gradient-to-r from-[#1A1D1C] via-[#2D4A32] to-[#4B8B5F] shadow-[0_0_12px_rgba(75,139,95,0.7)] transition-all duration-75"
+          style={{ width: `${scrollProgress}%` }}
+        ></div>
+      </div>
       
       {/* FULLY WORKING LOADING SCREEN WITH PROGRESS BAR */}
       {loading && (
@@ -322,7 +387,7 @@ export default function App() {
               <img
                 src={logoSrc}
                 alt="JJJ Logo"
-                className="w-full h-full object-cover rounded-xl animate-rotate-in shadow-inner"
+                className="w-full h-full object-cover rounded-xl animate-rotate-in shadow-inner mix-blend-screen"
               />
             </div>
             <div className="absolute -inset-2 rounded-3xl bg-[#4B8B5F]/20 blur-xl -z-10 animate-ping"></div>
@@ -344,7 +409,7 @@ export default function App() {
             <img
               src={logoSrc}
               alt="JJJ Logo"
-              className="w-full h-full object-cover rounded-lg animate-rotate-in"
+              className="w-full h-full object-cover rounded-lg animate-rotate-in mix-blend-screen"
             />
           </div>
           <span className="font-['Playfair_Display'] tracking-wide text-[#D4D9D2] text-base sm:text-lg font-bold">Jigar J Jalu</span>
@@ -358,6 +423,7 @@ export default function App() {
             { id: 'expertise', label: 'Expertise' },
             { id: 'projects', label: 'Projects' },
             { id: 'services', label: 'Services' },
+            { id: 'testimonials', label: 'Testimonials' },
             { id: 'contact', label: 'Contact' }
           ].map((item) => (
             <a
@@ -401,6 +467,7 @@ export default function App() {
             { id: 'expertise', label: 'Expertise' },
             { id: 'projects', label: 'Projects' },
             { id: 'services', label: 'Services' },
+            { id: 'testimonials', label: 'Testimonials' },
             { id: 'contact', label: 'Contact' }
           ].map((item) => (
             <a
@@ -907,6 +974,95 @@ export default function App() {
           </div>
         </section>
 
+        {/* TESTIMONIALS SECTION (Horizontal Carousel Slider) */}
+        <section 
+          id="testimonials"
+          onMouseEnter={() => setIsTestimonialPaused(true)}
+          onMouseLeave={() => setIsTestimonialPaused(false)}
+          className="px-4 sm:px-6 lg:px-16 py-20 sm:py-24 max-w-7xl mx-auto border-t border-[#2D3A32]"
+        >
+          <div className="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
+            <span className="text-xs uppercase tracking-widest text-[#4B8B5F] font-semibold">Client Feedback</span>
+            <h2 className="text-3xl sm:text-4xl font-bold font-['Playfair_Display'] mt-2 text-[#D4D9D2]">What Collaborators Say</h2>
+            <p className="text-sm sm:text-base text-[#AEBBAF] mt-3">Testimonials from founders, product leads, and partners.</p>
+          </div>
+
+          <div className="max-w-4xl mx-auto relative scroll-reveal">
+            {/* Carousel Card Container */}
+            <div 
+              onMouseMove={handleCardMouseMove}
+              className="editorial-panel p-8 sm:p-12 rounded-3xl border border-[#2D3A32] bg-[#202A24] relative shadow-2xl overflow-hidden transition-all duration-500"
+            >
+              <div className="absolute top-0 right-0 p-8 text-[#4B8B5F]/10 pointer-events-none select-none font-['Playfair_Display'] text-9xl font-bold">
+                “
+              </div>
+
+              <div className="min-h-[180px] flex flex-col justify-between relative z-10">
+                <div>
+                  <div className="flex items-center gap-1 mb-6">
+                    {[...Array(testimonialsData[currentTestimonialIndex].rating)].map((_, i) => (
+                      <span key={i} className="text-[#E66124] text-lg">★</span>
+                    ))}
+                  </div>
+                  <p className="text-lg sm:text-xl font-['Playfair_Display'] text-[#D4D9D2] leading-relaxed italic mb-8">
+                    "{testimonialsData[currentTestimonialIndex].quote}"
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-6 border-t border-[#2D3A32]">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-2xl bg-[#1A1D1C] border border-[#2D3A32] flex items-center justify-center font-bold font-['Playfair_Display'] text-[#4B8B5F] text-base shadow-sm">
+                      {testimonialsData[currentTestimonialIndex].avatar}
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-[#D4D9D2] font-['Playfair_Display'] text-base">
+                        {testimonialsData[currentTestimonialIndex].author}
+                      </h4>
+                      <p className="text-xs text-[#AEBBAF]">
+                        {testimonialsData[currentTestimonialIndex].role} · <span className="text-[#4B8B5F]">{testimonialsData[currentTestimonialIndex].company}</span>
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Navigation Arrows & Pagination */}
+                  <div className="flex items-center gap-3 self-end sm:self-auto">
+                    <button
+                      onClick={() => setCurrentTestimonialIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length)}
+                      className="p-3 rounded-xl bg-[#1A1D1C] border border-[#2D3A32] text-[#D4D9D2] hover:border-[#4B8B5F] hover:text-[#4B8B5F] transition-all"
+                      aria-label="Previous Testimonial"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => setCurrentTestimonialIndex((prev) => (prev + 1) % testimonialsData.length)}
+                      className="p-3 rounded-xl bg-[#1A1D1C] border border-[#2D3A32] text-[#D4D9D2] hover:border-[#4B8B5F] hover:text-[#4B8B5F] transition-all"
+                      aria-label="Next Testimonial"
+                    >
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center items-center gap-2 mt-6">
+              {testimonialsData.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentTestimonialIndex(idx)}
+                  className={`transition-all rounded-full ${
+                    currentTestimonialIndex === idx 
+                      ? 'w-8 h-2 bg-[#4B8B5F]' 
+                      : 'w-2 h-2 bg-[#2D3A32] hover:bg-[#AEBBAF]'
+                  }`}
+                  aria-label={`Go to testimonial ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* GITHUB & SOCIAL LINKS (Slide Right) */}
         <section className="px-4 sm:px-6 lg:px-16 py-20 sm:py-24 max-w-7xl mx-auto border-t border-[#2D3A32]">
           <div className="text-center max-w-2xl mx-auto mb-16 scroll-reveal">
@@ -1150,7 +1306,7 @@ export default function App() {
               <img
                 src={logoSrc}
                 alt="JJJ Logo"
-                className="w-full h-full object-cover rounded-lg animate-rotate-in"
+                className="w-full h-full object-cover rounded-lg animate-rotate-in mix-blend-screen"
               />
             </div>
             <span className="font-['Playfair_Display'] font-bold text-[#D4D9D2] text-base">Jigar J Jalu</span>
