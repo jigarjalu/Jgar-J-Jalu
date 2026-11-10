@@ -3,12 +3,12 @@
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #F9F9F8;
-    color: #18181B;
+    background-color: #1A1D1C;
+    color: #D4D9D2;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
-    color: #18181B;
+    color: #D4D9D2;
   }
 }
 
@@ -17,31 +17,31 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #F9F9F8;
+  background: #1A1D1C;
 }
 ::-webkit-scrollbar-thumb {
-  background: #D4D4D8;
+  background: #2D3A32;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563EB;
+  background: #4B8B5F;
 }
 
-/* Classic Editorial Minimalist Cards & Panels with Pronounced Spotlight Glow */
+/* Updated Portfolio Palette Cards & Panels with Spotlight Glow */
 .editorial-panel {
-  background: #FFFFFF;
-  border: 1px solid #E4E4E7;
-  box-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.06);
+  background: #202A24;
+  border: 1px solid #2D3A32;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.5);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .editorial-card {
   position: relative;
   overflow: hidden;
-  background: #FFFFFF;
-  border: 1px solid #E4E4E7;
+  background: #202A24;
+  border: 1px solid #2D3A32;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 6px 24px -4px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 30px -4px rgba(0, 0, 0, 0.4);
 }
 
 .editorial-card::before, .editorial-panel::before {
@@ -53,8 +53,8 @@
   bottom: 0;
   background: radial-gradient(
     500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(37, 99, 235, 0.16),
-    rgba(37, 99, 235, 0.06) 40%,
+    rgba(75, 139, 95, 0.22),
+    rgba(230, 97, 36, 0.1) 40%,
     transparent 70%
   );
   opacity: 0;
@@ -68,9 +68,9 @@
 }
 
 .editorial-card:hover {
-  border-color: #2563EB;
+  border-color: #4B8B5F;
   transform: translateY(-6px) scale(1.01);
-  box-shadow: 0 20px 45px -10px rgba(37, 99, 235, 0.18);
+  box-shadow: 0 22px 50px -10px rgba(75, 139, 95, 0.3);
 }
 
 /* Advanced Scroll Reveal Animations (Left / Right / Up) */
