@@ -38,6 +38,7 @@ export default function App() {
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
   const [scrollProgress, setScrollProgress] = useState<number>(0);
 
+
   // Contact Form State
   const [formData, setFormData] = useState({
     name: '',
@@ -402,6 +403,8 @@ export default function App() {
         </div>
       )}
 
+
+
       {/* TOP NAVIGATION BAR */}
       <header className="sticky top-0 z-40 bg-[#1A1D1C]/95 backdrop-blur-md border-b border-[#2D3A32] px-4 sm:px-6 lg:px-16 py-4 flex items-center justify-between gap-4">
         <a href="#home" className="flex items-center gap-3 text-lg font-bold tracking-tight whitespace-nowrap shrink-0 group">
@@ -487,10 +490,24 @@ export default function App() {
       <main className="w-full overflow-x-hidden">
         
         {/* HERO SECTION */}
-        <section id="home" className="relative px-4 sm:px-6 lg:px-16 pt-12 sm:pt-20 pb-20 sm:pb-32 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center scroll-reveal">
+        <section id="home" className="relative px-4 sm:px-6 lg:px-16 pt-16 sm:pt-24 pb-24 sm:pb-36 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center scroll-reveal overflow-hidden rounded-3xl my-6 bg-[#1A1D1C] border border-[#2D3A32]">
           
-          <div className="lg:col-span-7 flex flex-col items-start gap-5 sm:gap-6 scroll-left">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight font-['Playfair_Display'] leading-[1.12] text-[#D4D9D2] p-3 -ml-3 rounded-2xl transition-all duration-500 hover:bg-[radial-gradient(ellipse_at_top_left,rgba(75,139,95,0.14)_0%,transparent_75%)] hover:shadow-[0_0_30px_rgba(75,139,95,0.12)]">
+          {/* Highlighted Full Background Video playing on home page */}
+          <div className="absolute inset-0 z-0 overflow-hidden opacity-65 pointer-events-none">
+            <video
+              src="/assets/aistudio/abcd_9edea030.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover filter brightness-105 contrast-125 saturate-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1A1D1C]/90 via-[#1A1D1C]/55 to-[#1A1D1C]/90"></div>
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(26,29,28,0.7)_100%)]"></div>
+          </div>
+
+          <div className="lg:col-span-12 flex flex-col items-center text-center max-w-4xl mx-auto animate-hero-fade relative z-10">
+            <h1 className="text-3xl sm:text-5xl lg:text-7xl font-bold tracking-tight font-['Playfair_Display'] leading-[1.12] text-[#D4D9D2] p-3 rounded-2xl transition-all duration-500 hover:bg-[radial-gradient(ellipse_at_center,rgba(75,139,95,0.14)_0%,transparent_75%)] hover:shadow-[0_0_40px_rgba(75,139,95,0.15)]">
               {"Turning Ideas Into ".split(" ").map((word, i) => (
                 <span key={i} className="word-reveal mr-[0.25em]" style={{ animationDelay: `${i * 100}ms` }}>
                   {word}
@@ -501,80 +518,81 @@ export default function App() {
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-[#AEBBAF] max-w-2xl leading-relaxed">
+            <p className="text-base sm:text-xl text-[#AEBBAF] max-w-2xl leading-relaxed mt-2">
               Designing, developing, and building digital solutions with creativity, technology, and AI.
             </p>
 
-            <p className="text-sm text-[#879688] max-w-2xl leading-relaxed">
+            <p className="text-sm sm:text-base text-[#879688] max-w-2xl leading-relaxed">
               I'm <strong className="text-[#D4D9D2] font-semibold">Jigar J Jalu</strong> — a digital creator, website developer, designer, prompt engineer, and project management enthusiast passionate about transforming ideas into meaningful digital experiences.
             </p>
 
-            <div className="flex flex-wrap items-center gap-4 pt-2 w-full sm:w-auto">
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4 w-full">
               <a
                 href="#projects"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#4B8B5F] text-white font-semibold text-sm shadow-md shadow-[#4B8B5F]/20 hover:bg-[#3E724E] transition-all inline-flex items-center justify-center gap-2 group"
+                className="px-8 py-4 rounded-xl bg-[#4B8B5F] text-white font-semibold text-sm sm:text-base shadow-lg shadow-[#4B8B5F]/30 hover:bg-[#3E724E] transition-all inline-flex items-center justify-center gap-2 group"
               >
                 <span>Explore My Work</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
                 href="#contact"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#202A24] border border-[#2D3A32] text-[#D4D9D2] font-semibold text-sm hover:border-[#4B8B5F] transition-all inline-flex items-center justify-center shadow-sm"
+                className="px-8 py-4 rounded-xl bg-[#202A24] border border-[#2D3A32] text-[#D4D9D2] font-semibold text-sm sm:text-base hover:border-[#4B8B5F] transition-all inline-flex items-center justify-center shadow-md"
               >
                 Let's Collaborate
               </a>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-6 border-t border-[#2D3A32] w-full mt-4">
-              <div>
+            <div className="grid grid-cols-2 sm:grid-cols-2 gap-8 pt-8 border-t border-[#2D3A32] w-full max-w-lg mt-8">
+              <div className="text-center">
                 <span className="block text-xl sm:text-2xl font-bold font-['Playfair_Display'] text-[#D4D9D2]">Junagadh</span>
-                <span className="text-xs text-[#AEBBAF] flex items-center gap-1 mt-0.5">
-                  <MapPin className="w-3.5 h-3.5 text-[#E66124]" /> Gujarat, India
+                <span className="text-xs sm:text-sm text-[#AEBBAF] flex items-center justify-center gap-1.5 mt-1">
+                  <MapPin className="w-4 h-4 text-[#E66124]" /> Gujarat, India
                 </span>
               </div>
-              <div>
+              <div className="text-center">
                 <span className="block text-xl sm:text-2xl font-bold font-['Playfair_Display'] text-[#D4D9D2]">Available</span>
-                <span className="text-xs text-[#AEBBAF] flex items-center gap-1 mt-0.5">
-                  <span className="w-2 h-2 rounded-full bg-[#4B8B5F]"></span> Open to Projects
+                <span className="text-xs sm:text-sm text-[#AEBBAF] flex items-center justify-center gap-1.5 mt-1">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#4B8B5F] animate-pulse"></span> Open to Projects
                 </span>
-              </div>
-            </div>
-          </div>
-
-          {/* Hero Visual Right Side */}
-          <div className="lg:col-span-5 relative flex justify-center scroll-right w-full">
-            <div className="absolute -inset-4 bg-[#4B8B5F]/15 rounded-3xl blur-2xl -z-10"></div>
-            
-            <div 
-              onMouseMove={handleCardMouseMove}
-              className="w-full max-w-sm sm:max-w-md rounded-2xl overflow-hidden editorial-panel p-3 border border-[#2D3A32] relative shadow-xl bg-[#202A24]"
-            >
-              <div className="relative rounded-xl overflow-hidden aspect-[4/5] bg-[#1A1D1C]">
-                <img
-                  src="/assets/aistudio/Cinematic_Executive_Portrait_in_a_Modern_Office_c0fea8d5.png"
-                  alt="Jigar J Jalu Portrait"
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1D1C]/90 via-transparent to-transparent opacity-80"></div>
-                <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-[#202A24]/95 backdrop-blur-md border border-[#2D3A32] shadow-sm">
-                  <span className="text-xs uppercase tracking-widest text-[#4B8B5F] font-semibold">Jigar J Jalu</span>
-                  <h3 className="text-base sm:text-lg font-bold font-['Playfair_Display'] text-[#D4D9D2] mt-0.5">Digital Creator & Developer</h3>
-                  <p className="text-xs text-[#AEBBAF] mt-1">Design · Development · AI Workflows</p>
-                </div>
-              </div>
-
-              {/* Floating badges */}
-              <div className="absolute -top-3 -right-3 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-[#202A24] border border-[#2D3A32] text-xs font-semibold text-[#D4D9D2] shadow-md animate-float flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#4B8B5F]" /> Prompt Engineer
-              </div>
-              <div className="absolute -bottom-3 -left-3 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-[#202A24] border border-[#2D3A32] text-xs font-semibold text-[#D4D9D2] shadow-md animate-float flex items-center gap-2" style={{ animationDelay: '2s' }}>
-                <Code className="w-4 h-4 text-[#E66124]" /> Web Developer
               </div>
             </div>
           </div>
 
         </section>
+
+        {/* SWISS EDITORIAL MARQUEE BANNER */}
+        <div className="py-8 bg-[#202A24] border-y border-[#2D3A32] overflow-hidden">
+          <div className="animate-marquee whitespace-nowrap flex items-center gap-12 text-sm sm:text-base font-mono uppercase tracking-widest text-[#AEBBAF]">
+            <span>JJJ PORTFOLIO</span>
+            <span className="text-[#4B8B5F]">✦</span>
+            <span>DIGITAL CREATOR</span>
+            <span className="text-[#E66124]">✦</span>
+            <span>WEB DEVELOPER</span>
+            <span className="text-[#4B8B5F]">✦</span>
+            <span>PROMPT ENGINEER</span>
+            <span className="text-[#E66124]">✦</span>
+            <span>DESIGNER</span>
+            <span className="text-[#4B8B5F]">✦</span>
+            <span>PROJECT MANAGER</span>
+            <span className="text-[#E66124]">✦</span>
+            <span>JUNAGADH, INDIA</span>
+            <span className="text-[#4B8B5F]">✦</span>
+            <span>JJJ PORTFOLIO</span>
+            <span className="text-[#4B8B5F]">✦</span>
+            <span>DIGITAL CREATOR</span>
+            <span className="text-[#E66124]">✦</span>
+            <span>WEB DEVELOPER</span>
+            <span className="text-[#4B8B5F]">✦</span>
+            <span>PROMPT ENGINEER</span>
+            <span className="text-[#E66124]">✦</span>
+            <span>DESIGNER</span>
+            <span className="text-[#4B8B5F]">✦</span>
+            <span>PROJECT MANAGER</span>
+            <span className="text-[#E66124]">✦</span>
+            <span>JUNAGADH, INDIA</span>
+            <span className="text-[#4B8B5F]">✦</span>
+          </div>
+        </div>
 
         {/* ABOUT ME SECTION (Slide Left) */}
         <section id="about" className="px-4 sm:px-6 lg:px-16 py-20 sm:py-24 max-w-7xl mx-auto border-t border-[#2D3A32]">
